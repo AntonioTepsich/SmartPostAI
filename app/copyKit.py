@@ -48,7 +48,7 @@ def generate_keywords(prompt: str) -> List[str]:
 def generate_branding_snippet(prompt: str) -> str:
     # Load your API key from an environment variable or secret management service
     openai.api_key = os.getenv("OPENAI_API_KEY")
-    enriched_prompt = f"Genera un pie de post para instagram corto relacionada a {prompt}, para un emprendimiento, en español:"
+    enriched_prompt = f"Genera un pie de post para instagram relacionada a {prompt}, para un emprendimiento, en español, en menos de 32 tokens:"
     print(enriched_prompt)
     response = openai.Completion.create(
         model="text-davinci-002", prompt=enriched_prompt, temperature=0, max_tokens=32
