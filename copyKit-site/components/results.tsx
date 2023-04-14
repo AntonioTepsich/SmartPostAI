@@ -27,9 +27,9 @@ const Results: React.FC<ResutlsProps>=(props)=>{
     return (
     <>
         <div className="mb-6">
-            {resultSection("Prompt", <div className="text-lg font-bold">{props.prompt}</div>)}
-            {resultSection("Branding Snippet", <div className="font-semibold">{props.snippet}</div>)}
-            {resultSection("keywords", keywordElementsHolder)}
+            {resultSection("Entrada", <div className="text-lg font-bold">{props.prompt}</div>)}
+            {resultSection("Pie de Post", <div className="font-semibold">{props.snippet}</div>)}
+            {resultSection("#Hashtags", keywordElementsHolder)}
         </div>
             <button className="bg-gradient-to-r from-gray-100 to-green-500 disabled:opacity-50 w-full p-2 rounded-md text-lg" onClick={props.onBack}>Volver</button>
     </>)

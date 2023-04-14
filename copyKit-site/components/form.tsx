@@ -25,12 +25,12 @@ const Form: React.FC<FormProps>=(props)=>{
     return (
         <>
         <div className="mb-6 text-green-500">
-            <p>Dígame de qué se trata su marca y generaré textos y palabras claves para usted.</p>
+            <p>Dígame que tiene su post y generaré un pie de foto con palabras claves para usted.</p>
         </div>
         <input 
             className="p-2 w-full rounded-md focus:outline-green-500 focus:outline text-slate-700"
             type="text" 
-            placeholder="coffee" 
+            placeholder="Mate de Alpaca" 
             value={props.prompt}
             onChange={(e)=> updateProptValue(e.currentTarget.value)}>
         </input>
@@ -39,7 +39,7 @@ const Form: React.FC<FormProps>=(props)=>{
             <div>
                 {props.prompt.length}/{props.characterLimit}</div>
             </div>
-        <button className="bg-gradient-to-r from-gray-100	 to-green-500 disabled:opacity-50 w-full p-2 rounded-md text-lg" onClick={props.onSubmit} disabled={!isPromptValid || props.isLoading}>Subir</button>
+        <button className="bg-gradient-to-r from-gray-100	 to-green-500 disabled:opacity-50 w-full p-2 rounded-md text-lg" onClick={props.onSubmit} disabled={!isPromptValid || props.isLoading}>Generar</button>
         </>
     )
 }

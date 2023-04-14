@@ -2,7 +2,10 @@ from fastapi import FastAPI, HTTPException
 from copyKit import generate_branding_snippet, generate_keywords
 from fastapi.middleware.cors import CORSMiddleware
 
+from mangum import Mangum
+
 app = FastAPI()
+handler=Mangum(app)
 MAX_INPUT_LENGTH =32
 
 app.add_middleware(

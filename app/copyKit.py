@@ -17,7 +17,7 @@ def main():
         generate_branding_snippet(user_input)
         generate_keywords(user_input)
     else:
-        raise ValueError(f"Input length is too long. Must be under {MAX_INPUT_LENGTH}. Submitted input is {user_input}")
+        raise ValueError(f"La entrada es muy larga. Debe estar debajo de {MAX_INPUT_LENGTH}. Submitted input is {user_input}")
 
 def validate_length(prompt: str) -> bool:
     return len(prompt)<=MAX_INPUT_LENGTH
@@ -25,7 +25,7 @@ def validate_length(prompt: str) -> bool:
 def generate_keywords(prompt: str) -> List[str]:
     # Load your API key from an environment variable or secret management service
     openai.api_key = os.getenv("OPENAI_API_KEY")
-    enriched_prompt = f"Generate related branding keywords for {prompt}: "
+    enriched_prompt = f"Genera palabras relacionadas a {prompt} para poner de hashtag en instagram (sin el hashtag)"
     print(enriched_prompt)
 
     response = openai.Completion.create(
@@ -48,7 +48,7 @@ def generate_keywords(prompt: str) -> List[str]:
 def generate_branding_snippet(prompt: str) -> str:
     # Load your API key from an environment variable or secret management service
     openai.api_key = os.getenv("OPENAI_API_KEY")
-    enriched_prompt = f"Generate upbeat branding snippet for {prompt}: "
+    enriched_prompt = f"Genera un pie de post para instagram corto relacionada a {prompt}, para un emprendimiento, en español:"
     print(enriched_prompt)
     response = openai.Completion.create(
         model="text-davinci-002", prompt=enriched_prompt, temperature=0, max_tokens=32
