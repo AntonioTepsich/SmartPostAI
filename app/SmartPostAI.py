@@ -23,6 +23,8 @@ def main():
 def validate_length(prompt: str) -> bool:
     return len(prompt)<=MAX_INPUT_LENGTH
 
+
+
 #Genero Hashtags
 def generate_keywords(prompt: str) -> List[str]:
     # Cargo mi API kEY de OPENAI para utilizar ese servicio.
@@ -49,7 +51,7 @@ def generate_keywords(prompt: str) -> List[str]:
     #Separo con espacios
     keywords_text=keywords_text.strip()
     keyword_array=re.split(",|\n|;|-",keywords_text)
-    keyword_array=[k.lower().strip() for k in keyword_array]
+    keyword_array=[k.lower().strip() for k in keyword_array] 
     keyword_array=[k for k in keyword_array if len(k)>0]
 
     print(f"Keywords: {keyword_array}")
@@ -70,7 +72,7 @@ def generate_branding_snippet(prompt: str) -> str:
         model="text-davinci-003",
         prompt=enriched_prompt,
         temperature=0.8,
-        max_tokens=45,
+        max_tokens=60,
         top_p=1,
         frequency_penalty=0,
         presence_penalty=0
