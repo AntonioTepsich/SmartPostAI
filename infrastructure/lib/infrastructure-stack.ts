@@ -1,12 +1,10 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-import * as lambda from 'aws-cdk-lib/aws-lambda';    //agrego labda
-import * as apiGateway from 'aws-cdk-lib/aws-apigateway';    //agrego labda
-import * as dotenv from 'dotenv';
+import * as lambda from 'aws-cdk-lib/aws-lambda';    //Agrego lambda
+import * as apiGateway from 'aws-cdk-lib/aws-apigateway';    //Agrego ApiGateway
+import * as dotenv from 'dotenv';   //Oculto las API Key
 
 dotenv.config()
-
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
 
 export class InfrastructureStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -20,7 +18,7 @@ export class InfrastructureStack extends cdk.Stack {
     const apiLambda = new lambda.Function(this, "ApiFunction", {
       runtime: lambda.Runtime.PYTHON_3_9,
       code: lambda.Code.fromAsset("../app/"),
-      handler: "copyKit_api.handler",
+      handler: "SmartPostAI_api.handler",
       layers: [layer],
       environment: {
         OPENAI_API_KEY: process.env.OPENAI_API_KEY ?? "",
@@ -28,7 +26,7 @@ export class InfrastructureStack extends cdk.Stack {
     });
 
     const copiKittApi = new apiGateway.RestApi(this, "RestApi", {
-      restApiName: "CopyKitt API",
+      restApiName: "SmartPostAI API",
     });
 
     copiKittApi.root.addProxy({

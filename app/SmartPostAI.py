@@ -17,25 +17,36 @@ def main():
         generate_branding_snippet(user_input)
         generate_keywords(user_input)
     else:
-        raise ValueError(f"La entrada es muy larga. Debe estar debajo de {MAX_INPUT_LENGTH}. Submitted input is {user_input}")
+        raise ValueError(f"La entrada es muy larga. Debe estar debajo de {MAX_INPUT_LENGTH}. Ingrese de input: {user_input}")
 
+#Calculo el largo del prompt
 def validate_length(prompt: str) -> bool:
     return len(prompt)<=MAX_INPUT_LENGTH
 
+#Genero Hashtags
 def generate_keywords(prompt: str) -> List[str]:
-    # Load your API key from an environment variable or secret management service
+    # Cargo mi API kEY de OPENAI para utilizar ese servicio.
     openai.api_key = os.getenv("OPENAI_API_KEY")
-    enriched_prompt = f"Genera palabras relacionadas a {prompt} para poner de hashtag en instagram (sin el hashtag)"
+
+    #Genero el prompt que entrego al modelo de IA.
+    enriched_prompt = f"Generar palabras clave de marca relacionadas con {prompt}."
     print(enriched_prompt)
 
+    #Genero la respuesta a partir del modelo con variables determinadas
     response = openai.Completion.create(
-        model="text-davinci-002", prompt=enriched_prompt, temperature=0, max_tokens=32
+        model="text-davinci-003",
+        prompt=enriched_prompt,
+        temperature=0.8,
+        max_tokens=45,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0
     )
 
-    #extraigo texto
+    #Extraigo texto de la respuesta 
     keywords_text:str = response["choices"][0]["text"]
 
-    #separo con espacios
+    #Separo con espacios
     keywords_text=keywords_text.strip()
     keyword_array=re.split(",|\n|;|-",keywords_text)
     keyword_array=[k.lower().strip() for k in keyword_array]
@@ -45,19 +56,30 @@ def generate_keywords(prompt: str) -> List[str]:
 
     return keyword_array
 
+#Genero el pie de Post
 def generate_branding_snippet(prompt: str) -> str:
-    # Load your API key from an environment variable or secret management service
+    # Cargo mi API kEY de OPENAI para utilizar ese servicio.
     openai.api_key = os.getenv("OPENAI_API_KEY")
-    enriched_prompt = f"Genera un pie de post para instagram relacionada a {prompt}, para un emprendimiento, en español, en menos de 32 tokens:"
-    print(enriched_prompt)
-    response = openai.Completion.create(
-        model="text-davinci-002", prompt=enriched_prompt, temperature=0, max_tokens=32
-    )
 
-    #extraigo texto
+    #Genero el prompt que entrego al modelo de IA.
+    enriched_prompt = f"Generar un fragmento de marca optimista para un post de instagram que es sobre {prompt} y que tenga como maximo de largo {MAX_INPUT_LENGTH} caracteres, sin hashtags y puede ser con emogis."
+    print(enriched_prompt)
+
+    #Genero la respuesta a partir del modelo con variables determinadas
+    response = openai.Completion.create(
+        model="text-davinci-003",
+        prompt=enriched_prompt,
+        temperature=0.8,
+        max_tokens=45,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0
+    )
+    
+    #Extraigo texto de la respuesta 
     branding_text:str = response["choices"][0]["text"]
 
-    #separo con espacios
+    #Separo con espacios
     branding_text=branding_text.strip()
 
     #agrego ... si no termina la oracion ahi

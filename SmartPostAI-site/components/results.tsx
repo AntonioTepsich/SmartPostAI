@@ -10,7 +10,7 @@ const Results: React.FC<ResutlsProps>=(props)=>{
     
     const keywordElement=[];
     for(let i = 0; i< props.keywords.length;i++){
-        const element= <div key={i} className="bg-green-500 p-1 text-gray-50 px-2 text-sm rounded-sm">#{props.keywords[i]}</div>;
+        const element= <div key={i} className="bg-green-500 p-1 text-gray-50 px-2 text-sm rounded-sm">{props.keywords[i]}</div>;
         keywordElement.push(element);
     }
 

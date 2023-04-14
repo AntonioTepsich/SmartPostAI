@@ -3,7 +3,7 @@ import Form from "./form";
 import Results from "./results";
 import GitHubButton from 'react-github-btn'
 
-const CopyKit: React.FC=()=> {
+const SmartPostAI: React.FC=()=> {
 
     const CHARACTERLIMIT=32;
     const ENDPOINT: string= "https://4nx1l84mua.execute-api.sa-east-1.amazonaws.com/prod/generate_snippet_and_keywords";
@@ -71,4 +71,4 @@ const CopyKit: React.FC=()=> {
     );
 };
 
-export default CopyKit;
+export default SmartPostAI;

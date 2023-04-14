@@ -19,7 +19,7 @@ const Form: React.FC<FormProps>=(props)=>{
     let statusText=null;
     if(isPromptValid==false){
         statusColor="text-red-400"
-        statusText=`Input must be less than ${props.characterLimit} characters.`
+        statusText=`Debe tener menos de ${props.characterLimit} caracteres.`
     }
 
     return (
@@ -30,7 +30,7 @@ const Form: React.FC<FormProps>=(props)=>{
         <input 
             className="p-2 w-full rounded-md focus:outline-green-500 focus:outline text-slate-700"
             type="text" 
-            placeholder="Mate de Alpaca" 
+            placeholder="Cafe" 
             value={props.prompt}
             onChange={(e)=> updateProptValue(e.currentTarget.value)}>
         </input>

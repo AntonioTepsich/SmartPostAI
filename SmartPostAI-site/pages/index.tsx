@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import CopyKit from '../components/copyKit'
+import SmartPostAI from '../components/SmartPostAI'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
@@ -11,7 +11,7 @@ const Home: NextPage = () => {
         <meta name="description" content="Asistente de Instagram con IA, generador de hashtags y pie de Post" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <CopyKit />      
+      <SmartPostAI />      
     </div>
   )
 }
