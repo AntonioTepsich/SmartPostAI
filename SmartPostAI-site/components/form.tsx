@@ -30,7 +30,7 @@ const Form: React.FC<FormProps>=(props)=>{
         <input 
             className="p-2 w-full rounded-md focus:outline-green-500 focus:outline text-slate-700"
             type="text" 
-            placeholder="Cafe" 
+            placeholder="Café" 
             value={props.prompt}
             onChange={(e)=> updateProptValue(e.currentTarget.value)}>
         </input>
