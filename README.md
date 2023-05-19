@@ -1,4 +1,5 @@
 # SmartPostAI: Weekend Project
+## FUERA DE SERVICIO!!
 
 Esta es una aplicación SaaS que genera fragmentos de marca para post de Instagram con Inteligencia Artificial y palabras clave para la marca del cliente. 
 Es una aplicación FullStack creada para saber utilizar la API de OPENAI y desplegar el proyecto en la nube de AWS, dando lugar a una aplicacion de tipo SaaS.
